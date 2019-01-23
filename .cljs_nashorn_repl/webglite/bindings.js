@@ -62,7 +62,7 @@ webglite.bindings.get_program_info_log = (function webglite$bindings$get_program
 return cljs.core.deref.call(null,webglite.bindings.context).call(null,new cljs.core.Keyword(null,"gl","gl",-246422634)).getProgramInfoLog(program);
 });
 webglite.bindings.get_program_parameter = (function webglite$bindings$get_program_parameter(program,glenum){
-return cljs.core.deref.call(null,webglite.bindings.context).call(null,new cljs.core.Keyword(null,"gl","gl",-246422634)).getProgramParameter(glenum);
+return cljs.core.deref.call(null,webglite.bindings.context).call(null,new cljs.core.Keyword(null,"gl","gl",-246422634)).getProgramParameter(program,glenum);
 });
 webglite.bindings.get_shader_parameter = (function webglite$bindings$get_shader_parameter(shader,glenum){
 return cljs.core.deref.call(null,webglite.bindings.context).call(null,new cljs.core.Keyword(null,"gl","gl",-246422634)).getShaderParameter(shader,glenum);
@@ -128,8 +128,26 @@ return cljs.core.deref.call(null,webglite.bindings.context).call(null,new cljs.c
 webglite.bindings.get_uniform_location = (function webglite$bindings$get_uniform_location(program,attribute){
 return cljs.core.deref.call(null,webglite.bindings.context).call(null,new cljs.core.Keyword(null,"gl","gl",-246422634)).getUniformLocation(program,attribute);
 });
+webglite.bindings.clear_depth = (function webglite$bindings$clear_depth(value){
+return cljs.core.deref.call(null,webglite.bindings.context).call(null,new cljs.core.Keyword(null,"gl","gl",-246422634)).clearDepth(value);
+});
+webglite.bindings.enable = (function webglite$bindings$enable(glenum){
+return cljs.core.deref.call(null,webglite.bindings.context).call(null,new cljs.core.Keyword(null,"gl","gl",-246422634)).enable(glenum);
+});
+webglite.bindings.depth_func = (function webglite$bindings$depth_func(glenum){
+return cljs.core.deref.call(null,webglite.bindings.context).call(null,new cljs.core.Keyword(null,"gl","gl",-246422634)).depthFunc(glenum);
+});
 webglite.bindings.float$ = (function webglite$bindings$float(){
 return cljs.core.deref.call(null,webglite.bindings.context).call(null,new cljs.core.Keyword(null,"gl","gl",-246422634)).FLOAT;
+});
+webglite.bindings.lequal = (function webglite$bindings$lequal(){
+return cljs.core.deref.call(null,webglite.bindings.context).call(null,new cljs.core.Keyword(null,"gl","gl",-246422634)).LEQUAL;
+});
+webglite.bindings.depth_test = (function webglite$bindings$depth_test(){
+return cljs.core.deref.call(null,webglite.bindings.context).call(null,new cljs.core.Keyword(null,"gl","gl",-246422634)).DEPTH_TEST;
+});
+webglite.bindings.depth_buffer_bit = (function webglite$bindings$depth_buffer_bit(){
+return cljs.core.deref.call(null,webglite.bindings.context).call(null,new cljs.core.Keyword(null,"gl","gl",-246422634)).DEPTH_BUFFER_BIT;
 });
 webglite.bindings.array_buffer = (function webglite$bindings$array_buffer(){
 return cljs.core.deref.call(null,webglite.bindings.context).call(null,new cljs.core.Keyword(null,"gl","gl",-246422634)).ARRAY_BUFFER;

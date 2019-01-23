@@ -1,6 +1,9 @@
 (ns webglite.examples.tetris
-  (:require [webglite.bindings :as gl]
-            [webglite.glsh-helper :as h]))
+  (:require
+    cljsjs.gl-matrix
+    [webglite.bindings :as gl]
+    [webglite.glsh-helper :as h])
+  )
 
 (defn mycanvas [] (gl/create-canvas 400 400))
 (gl/get-context (mycanvas) "webgl2")
@@ -41,11 +44,43 @@
         nil)
       shader-program)))
 
+(def program (init-shader-program))
+(def attrib-locations {
+                       :vertex-position (gl/get-attrib-location program "aVertexPosition")})
+
+(def uniform-locations {
+                        :projection-matrix (gl/get-uniform-location program "uProjectionMatrix")
+                        :model-view-matrix (gl/get-uniform-location program "uModelViewMatrix")
+                        })
+
+(def position [-1.0 1.0
+                 1.0 1.0
+                 -1.0 -1.0
+                 1.0 -1.0])
+;(defn init-buffers
+  ;(let [position-buffer (gl/create-buffer)]
+    ;(gl/array-buffer position-buffer)
+    ;(gl/buffer-data (gl/array-buffer) (Float32Array. position (gl/static-draw)))
+    ;position-buffer))
+
+(defn draw-scene []
+  (gl/clear-color 0.0 0.0 0.0 1.0)
+  (gl/clear-depth 1.0)
+  (gl/enable (gl/depth-test))
+  (gl/depth-func (gl/lequal))
+  (gl/clear (or (gl/color-buffer-bit) (gl/depth-buffer-bit)))
+  (println "here")
+  (println (.create js/mat4))
+  (println "end")
+  )
+
 (defn init-game []
+  (draw-scene)
   (if (gl/not-nil)
     (println "webgl is on")
     (println "no webgl!"))
   (println vs-source)
   (println fs-source)
-  (gl/clear-color 0.2 0.5 1 1)
-  (gl/clear (gl/color-buffer-bit)))
+  ;(gl/clear-color 0.2 0.5 1 1)
+  ;(gl/clear (gl/color-buffer-bit))
+  )

@@ -1,2 +1,9 @@
 ^{:watch-dirs  ["src"]}
-{:main webglite.core}
+{:main webglite.core }
+
+{:foreign-libs
+  [{:file-min  "cljsjs/gl-matrix/production/gl-matrix.min.inc.js",
+       :file  "cljsjs/gl-matrix/development/gl-matrix.inc.js",
+          :provides  ["cljsjs.gl-matrix"]}],
+   :externs  ["cljsjs/gl-matrix/common/gl-matrix.ext.js"]}
+

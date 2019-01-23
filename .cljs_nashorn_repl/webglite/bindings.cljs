@@ -52,7 +52,7 @@
   (.getProgramInfoLog (@context :gl) program))
 
 (defn get-program-parameter [program glenum]
-  (.getProgramParameter (@context :gl) glenum))
+  (.getProgramParameter (@context :gl) program glenum))
 
 (defn get-shader-parameter [shader glenum]
   (.getShaderParameter (@context :gl) shader glenum))
@@ -125,12 +125,31 @@
 (defn get-uniform-location [program attribute]
   (.getUniformLocation (@context :gl) program attribute))
 
+
+(defn clear-depth [value]
+  (.clearDepth (@context :gl) value))
+
+(defn enable [glenum]
+  (.enable (@context :gl) glenum))
+
+(defn depth-func [glenum]
+  (.depthFunc (@context :gl) glenum))
+
 ;;GL types
 
 (defn float []
   (.-FLOAT (@context :gl)))
 
 ;;GLEnums
+
+(defn lequal []
+  (.-LEQUAL (@context :gl)))
+
+(defn depth-test []
+  (.-DEPTH_TEST (@context :gl)))
+
+(defn depth-buffer-bit []
+  (.-DEPTH_BUFFER_BIT (@context :gl)))
 
 (defn array-buffer []
   (.-ARRAY_BUFFER (@context :gl)))
