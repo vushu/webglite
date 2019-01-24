@@ -10,38 +10,38 @@
     (set! (.-border (.-style canvas)) "1px solid")
     (.appendChild (.-body js/document) canvas)))
 
-(defonce context (atom {}))
+(defonce gl (atom {}))
 
 (defn get-context [canvas gltype]
-    (swap! context assoc :gl (.getContext canvas gltype)))
+    (reset! gl (.getContext canvas gltype)))
 
 (defn not-nil []
-  (some? (@context :gl)))
+  (some? @gl))
 
 (defn create-shader
   "type Either gl.VERTEX_SHADER or gl.FRAGMENT_SHADER."
   [type]
-  (.createShader (@context :gl) type))
+  (.createShader @gl type))
 
 (defn clear-color [r g b a]
-  (.clearColor (@context :gl) r g b a))
+  (.clearColor @gl r g b a))
 
 (defn clear [glenum]
-  (.clear (@context :gl) glenum))
+  (.clear @gl glenum))
 
 (defn viewport [x y width height]
-  (.viewport (@context :gl) x y width height))
+  (.viewport @gl x y width height))
 
 (defn shader-source
   "shader A WebGLShader object in which to set the source code.
    source DOMString containing the GLSL source code to set."
   [source code]
-  (.shaderSource (@context :gl) source code))
+  (.shaderSource @gl source code))
 
 (defn compile-shader
   "shader A fragment or vertex WebGLShader."
   [shader]
-  (.compileShader (@context :gl) shader))
+  (.compileShader @gl shader))
 
 (defn get-shader-info-log
   "Return the info log of the shader"
@@ -49,13 +49,13 @@
   (.getShaderInfoLog shader))
 
 (defn get-program-info-log [program]
-  (.getProgramInfoLog (@context :gl) program))
+  (.getProgramInfoLog @gl program))
 
 (defn get-program-parameter [program glenum]
-  (.getProgramParameter (@context :gl) program glenum))
+  (.getProgramParameter @gl program glenum))
 
 (defn get-shader-parameter [shader glenum]
-  (.getShaderParameter (@context :gl) shader glenum))
+  (.getShaderParameter @gl shader glenum))
 
 (defn delete-shader
   "does as it says"
@@ -64,134 +64,136 @@
 
 (defn create-program
   []
-  (.createProgram (@context :gl)))
+  (.createProgram @gl))
 
 (defn attach-shader
   [program shader]
-  (.attachShader (@context :gl) program shader))
+  (.attachShader @gl program shader))
 
 (defn link-program
   [program]
-  (.linkProgram (@context :gl) program))
+  (.linkProgram @gl program))
 
 (defn delete-program
   [program]
-  (.deleteProgram (@context :gl) program))
+  (.deleteProgram @gl program))
 
 (defn get-attrib-location
   [program attribute]
-  (.getAttribLocation (@context :gl) program attribute))
+  (.getAttribLocation @gl program attribute))
 
 (defn uniform4fv [attribute rgba]
-  (.uniform4fv (@context :gl) attribute rgba))
+  (.uniform4fv @gl attribute rgba))
 
 (defn create-buffer
   []
-  (.createBuffer (@context :gl)))
+  (.createBuffer @gl))
 
 (defn bind-buffer
   [array-buffer position-buffer]
-  (.bindBuffer (@context :gl) array-buffer position-buffer))
+  (.bindBuffer @gl array-buffer position-buffer))
 
 (defn buffer-data
   "example in javascript:
    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);"
   [array-buffer positions gl-enum]
-  (.bufferData (@context :gl) array-buffer positions gl-enum))
+  (.bufferData @gl array-buffer positions gl-enum))
 
 (defn create-vertex-array []
-  (.createVertexArray (@context :gl)))
+  (.createVertexArray @gl))
 
 (defn bind-vertex-array [vertex-array]
-  (.bindVertexArray (@context :gl) vertex-array))
+  (.bindVertexArray @gl vertex-array))
 
 (defn enable-vertex-attrib-array
   [position-attribute-location]
-  (.enableVertexAttribArray (@context :gl) position-attribute-location))
+  (.enableVertexAttribArray @gl position-attribute-location))
 
 (defn vertex-attrib-pointer
   [attribute-location size type normalize stride offset]
-  (.vertexAttribPointer (@context :gl) attribute-location size type normalize stride offset))
+  (.vertexAttribPointer @gl attribute-location size type normalize stride offset))
 
 (defn use-program [program]
-  (.useProgram (@context :gl) program))
+  (.useProgram @gl program))
 
 (defn uniform2f [resolution-uniform-location width height]
-  (.uniform2f (@context :gl) resolution-uniform-location width height))
+  (.uniform2f @gl resolution-uniform-location width height))
 
 (defn draw-arrays [primitive-type offset count]
-  (.drawArrays (@context :gl) primitive-type offset count))
+  (.drawArrays @gl primitive-type offset count))
 
 (defn get-uniform-location [program attribute]
-  (.getUniformLocation (@context :gl) program attribute))
+  (.getUniformLocation @gl program attribute))
 
 
 (defn clear-depth [value]
-  (.clearDepth (@context :gl) value))
+  (.clearDepth @gl value))
 
 (defn enable [glenum]
-  (.enable (@context :gl) glenum))
+  (.enable @gl glenum))
 
 (defn depth-func [glenum]
-  (.depthFunc (@context :gl) glenum))
+  (.depthFunc @gl glenum))
 
 ;;GL types
 
 (defn float []
-  (.-FLOAT (@context :gl)))
+  (.-FLOAT @gl))
 
 ;;GLEnums
 
 (defn lequal []
-  (.-LEQUAL (@context :gl)))
+  (.-LEQUAL @gl))
 
 (defn depth-test []
-  (.-DEPTH_TEST (@context :gl)))
+  (.-DEPTH_TEST @gl))
 
 (defn depth-buffer-bit []
-  (.-DEPTH_BUFFER_BIT (@context :gl)))
+  (.-DEPTH_BUFFER_BIT @gl))
 
 (defn array-buffer []
-  (.-ARRAY_BUFFER (@context :gl)))
+  (.-ARRAY_BUFFER @gl))
 
 (defn vertex-shader []
-  (.-VERTEX_SHADER (@context :gl)))
+  (.-VERTEX_SHADER @gl))
 
 (defn fragment-shader []
-  (.-FRAGMENT_SHADER (@context :gl)))
+  (.-FRAGMENT_SHADER @gl))
 
 (defn color-buffer-bit []
-  (.-COLOR_BUFFER_BIT (@context :gl)))
+  (.-COLOR_BUFFER_BIT @gl))
 
 (defn triangles []
-  (.-TRIANGLES (@context :gl)))
+  (.-TRIANGLES @gl))
 
 (defn static-draw []
-  (.-STATIC_DRAW (@context :gl)))
+  (.-STATIC_DRAW @gl))
 
 (defn dynamic-draw []
-  (.-DYNAMIC_DRAW (@context :gl)))
+  (.-DYNAMIC_DRAW @gl))
 
 (defn stream_draw []
-  (.-STREAM_DRAW (@context :gl)))
+  (.-STREAM_DRAW @gl))
 
 (defn static-read []
-  (.-STATIC_READ (@context :gl)))
+  (.-STATIC_READ @gl))
 
 (defn stream_read []
-  (.-STREAM_READ (@context :gl)))
+  (.-STREAM_READ @gl))
 
 (defn static-copy []
-  (.-STATIC_COPY (@context :gl)))
+  (.-STATIC_COPY @gl))
 
 (defn dynamic-copy []
-  (.-DYNAMIC_COPY (@context :gl)))
+  (.-DYNAMIC_COPY @gl))
 
 (defn stream_copy []
-  (.-STREAM_COPY (@context :gl)))
+  (.-STREAM_COPY @gl))
 
 (defn link-status []
-  (.-LINK_STATUS (@context :gl)))
+  (.-LINK_STATUS @gl))
 
 (defn compile-status []
-  (.-COMPILE_STATUS (@context :gl)))
+  (.-COMPILE_STATUS @gl))
+
+
