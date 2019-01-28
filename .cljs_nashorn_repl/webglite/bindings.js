@@ -14,10 +14,6 @@ canvas.style.border = "1px solid";
 
 return document.body.appendChild(canvas);
 });
-if((typeof webglite !== 'undefined') && (typeof webglite.bindings !== 'undefined') && (typeof webglite.bindings.gl !== 'undefined')){
-} else {
-webglite.bindings.gl = cljs.core.atom.call(null,cljs.core.PersistentArrayMap.EMPTY);
-}
 webglite.bindings.get_context = (function webglite$bindings$get_context(canvas,gltype){
 return cljs.core.reset_BANG_.call(null,webglite.bindings.gl,canvas.getContext(gltype));
 });

@@ -10,8 +10,6 @@
     (set! (.-border (.-style canvas)) "1px solid")
     (.appendChild (.-body js/document) canvas)))
 
-(defonce gl (atom {}))
-
 (defn get-context [canvas gltype]
     (reset! gl (.getContext canvas gltype)))
 
