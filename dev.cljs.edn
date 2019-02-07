@@ -1,3 +1,6 @@
+
+^{:open-url "http://vushu.dk:9500"}
+^{:connect-url "ws://vushu.dk:9500/figwheel-connect"}
 ^{:watch-dirs  ["src"]}
 {:main webglite.core }
 

@@ -1,0 +1,1 @@
+{"version":3,"file":"\/root\/coding\/clojurescript\/webglite\/.cljs_nashorn_repl\/webglite\/canvas.js","sources":["canvas.cljs"],"lineCount":11,"mappings":";AAAA;;AAEA,wBAAA,xBAAMA,wDAAOC;AAAb,AACE,OAAS,AAAUA;;AAGrB,yBAAA,zBAAMC,0DAAQD;AAAd,AACE,OAAU,AAAUA","names":["webglite.canvas\/width","gl","webglite.canvas\/height"]}

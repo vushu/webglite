@@ -44,7 +44,7 @@
 (defn get-shader-info-log
   "Return the info log of the shader"
   [gl shader]
-  (.getShaderInfoLog shader))
+  (.getShaderInfoLog gl shader))
 
 (defn get-program-info-log [gl program]
   (.getProgramInfoLog gl program))
@@ -58,7 +58,7 @@
 (defn delete-shader
   "does as it says"
   [gl shader]
-  (.deleteShader shader))
+  (.deleteShader gl shader))
 
 (defn create-program
   [gl]
@@ -123,7 +123,6 @@
 (defn get-uniform-location [gl program attribute]
   (.getUniformLocation gl program attribute))
 
-
 (defn clear-depth [gl value]
   (.clearDepth gl value))
 
@@ -132,66 +131,4 @@
 
 (defn depth-func [gl glenum]
   (.depthFunc gl glenum))
-
-;;GL types
-
-(defn float [gl]
-  (.-FLOAT gl))
-
-;;GLEnums
-
-(defn lequal [gl]
-  (.-LEQUAL gl))
-
-(defn depth-test [gl]
-  (.-DEPTH_TEST gl))
-
-(defn depth-buffer-bit [gl]
-  (.-DEPTH_BUFFER_BIT gl))
-
-(defn array-buffer [gl]
-  (.-ARRAY_BUFFER gl))
-
-(defn vertex-shader [gl]
-  (.-VERTEX_SHADER gl))
-
-(defn fragment-shader [gl]
-  (.-FRAGMENT_SHADER gl))
-
-(defn color-buffer-bit [gl]
-  (.-COLOR_BUFFER_BIT gl))
-
-(defn triangles [gl]
-  (.-TRIANGLES gl))
-
-(defn static-draw [gl]
-  (.-STATIC_DRAW gl))
-
-(defn dynamic-draw [gl]
-  (.-DYNAMIC_DRAW gl))
-
-(defn stream_draw [gl]
-  (.-STREAM_DRAW gl))
-
-(defn static-read [gl]
-  (.-STATIC_READ gl))
-
-(defn stream_read [gl]
-  (.-STREAM_READ gl))
-
-(defn static-copy [gl]
-  (.-STATIC_COPY gl))
-
-(defn dynamic-copy [gl]
-  (.-DYNAMIC_COPY gl))
-
-(defn stream_copy [gl]
-  (.-STREAM_COPY gl))
-
-(defn link-status [gl]
-  (.-LINK_STATUS gl))
-
-(defn compile-status [gl]
-  (.-COMPILE_STATUS gl))
-
 

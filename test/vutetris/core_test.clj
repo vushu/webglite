@@ -1,6 +1,6 @@
-(ns vutetris.core-test
+(ns webglite.core-test
   (:require [clojure.test :refer :all]
-            [vutetris.core :refer :all]))
+            [webglite.core :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."
